@@ -1,4 +1,4 @@
-import { Routes ,Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import About from "./About";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -9,33 +9,30 @@ import NewPost from "./NewPost";
 import PostPage from "./PostPage";
 import EditPost from "./EditPost";
 
-import{DataProvider} from "./context/DataContext"
+import { DataProvider } from "./context/DataContext";
 
 function App() {
-  
   return (
     <div className="App">
-
       <DataProvider>
-         
-            <Header title="yogi social media" />
-            <Nav/>
+        <Header title="yogi social media" />
+        <div className="main-container">
+          <Nav />
+          <main className="content-area">
             <Routes>
-              <Route path="/" element={ 
-                <Home />}/>
-            <Route path="post">
-                  <Route index element={<NewPost
-                  />}/>
-              
-            <Route path=":id" element={<PostPage />}/>
-            </Route>
-            <Route path="/edit/:id" element={<EditPost/>}/>   
-            <Route path="about" element={<About/>}/>
-            <Route path="*" element={<Missing/>}/>
+              <Route path="/" element={<Home />} />
+              <Route path="post">
+                <Route index element={<NewPost />} />
+                <Route path=":id" element={<PostPage />} />
+              </Route>
+              <Route path="/edit/:id" element={<EditPost />} />
+              <Route path="about" element={<About />} />
+              <Route path="*" element={<Missing />} />
             </Routes>
-            
-          <Footer/>
-     </DataProvider>
+          </main>
+        </div>
+        <Footer />
+      </DataProvider>
     </div>
   );
 }
